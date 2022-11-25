@@ -76,7 +76,6 @@ class ASRHelper @Inject constructor(
         }
 
         override fun onRecognizingResults(partialResults: Bundle?) {
-
         }
 
         override fun onError(error: Int, errorMessage: String?) {
