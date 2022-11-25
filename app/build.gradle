@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.huawei.agconnect'
 }
 
 android {
@@ -15,20 +19,43 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    buildTypes {
+    signingConfigs {
         release {
+            storeFile file('learnyourenvironment.jks')
+            keyAlias 'key0'
+            keyPassword '123456'
+            storePassword '123456'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+
+    }
+    buildTypes {
+
+        release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String","API_KEY",'"DAEDAG0or67nkSEyjDTy5vGQ9sjFW1KYYxnu4olowIk3Ti0flTOzSS0IckOaz4F2onRuPKOnZH08gcfFWttwUZOxcAjiIr1BthgFaw=="'
         }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+        debug {
+            signingConfig signingConfigs.release
+            debuggable true
+            buildConfigField "String","API_KEY",'"DAEDAG0or67nkSEyjDTy5vGQ9sjFW1KYYxnu4olowIk3Ti0flTOzSS0IckOaz4F2onRuPKOnZH08gcfFWttwUZOxcAjiIr1BthgFaw=="'
+        }
+}
+
+
+buildFeatures {
+    viewBinding true
+}
+compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
+kotlinOptions {
+    jvmTarget = '1.8'
+}
 }
 
 dependencies {
@@ -40,4 +67,29 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    //AGC
+    implementation 'com.huawei.agconnect:agconnect-core:1.7.0.300'
+
+
+    // ML Kit
+    implementation 'com.huawei.hms:ml-computer-voice-tts:3.7.0.303'
+    implementation 'com.huawei.hms:ml-computer-voice-asr-plugin:3.7.0.301'
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    kapt 'com.google.dagger:hilt-compiler:2.38.1'
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
+
+    // Kotlin Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.2")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.2")
+
+    // Lottie Animation Library
+    implementation "com.airbnb.android:lottie:3.4.2"
 }
