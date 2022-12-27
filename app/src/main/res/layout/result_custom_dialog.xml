@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/result_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_result_screen">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_star" />
+
+        <TextView
+            android:id="@+id/resultNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:text=""
+            tools:text="%13"
+            android:textColor="@color/result"
+            android:textSize="42sp"
+            app:layout_constraintBottom_toTopOf="@id/youCanDoBetter"
+            app:layout_constraintStart_toStartOf="@id/star"
+            app:layout_constraintEnd_toStartOf="@id/correctTextView"
+            app:layout_constraintTop_toBottomOf="@+id/star" />
+
+        <TextView
+            android:id="@+id/correctTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Correct"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            app:layout_constraintStart_toEndOf="@id/resultNumber"
+            app:layout_constraintEnd_toEndOf="@id/star"
+            app:layout_constraintTop_toTopOf="@id/resultNumber"
+            app:layout_constraintBottom_toBottomOf="@id/resultNumber"/>
+
+        <TextView
+            android:id="@+id/youCanDoBetter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="32dp"
+            android:text="You can do better !"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/ivReturn"
+            app:layout_constraintEnd_toEndOf="@+id/star"
+            app:layout_constraintStart_toStartOf="@+id/star"
+            app:layout_constraintTop_toBottomOf="@+id/resultNumber" />
+
+        <ImageView
+            android:id="@+id/ivReturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="32dp"
+            android:contentDescription="@null"
+            app:layout_constraintEnd_toStartOf="@id/ivHome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/youCanDoBetter"
+            app:srcCompat="@drawable/ic_again" />
+
+        <ImageView
+            android:id="@+id/ivHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivReturn"
+            app:layout_constraintTop_toBottomOf="@id/youCanDoBetter"
+            app:srcCompat="@drawable/ic_gotohome" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

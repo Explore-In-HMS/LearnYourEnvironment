@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.hms.learnyourenvironment.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_animalList"
+            app:destination="@id/animalList" />
+    </fragment>
+    <fragment
+        android:id="@+id/animalList"
+        android:name="com.hms.learnyourenvironment.ui.animal_list.AnimalList"
+        android:label="fragment_animal_list"
+        tools:layout="@layout/fragment_animal_list" >
+        <action
+            android:id="@+id/action_animalList_to_animalDetail"
+            app:destination="@id/animalDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/animalDetail"
+        android:name="com.hms.learnyourenvironment.ui.anilmal_detay.AnimalDetail"
+        android:label="fragment_animal_detail"
+        tools:layout="@layout/fragment_animal_detail" >
+        <argument
+            android:name="animalItem"
+            app:argType="com.hms.learnyourenvironment.data.model.AnimalItem"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_animalDetail_to_animalList"
+            app:destination="@id/animalList" />
+    </fragment>
+</navigation>
