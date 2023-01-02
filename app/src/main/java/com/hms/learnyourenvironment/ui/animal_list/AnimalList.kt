@@ -1,3 +1,21 @@
+/*
+ *
+ *  * Copyright 2021. Huawei Technologies Co., Ltd. All rights reserved.
+ *  *
+ *  *    Licensed under the Apache License, Version 2.0 (the "License");
+ *  *    you may not use this file except in compliance with the License.
+ *  *    You may obtain a copy of the License at
+ *  *
+ *  *      http://www.apache.org/licenses/LICENSE-2.0
+ *  *
+ *  *    Unless required by applicable law or agreed to in writing, software
+ *  *    distributed under the License is distributed on an "AS IS" BASIS,
+ *  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  *    See the License for the specific language governing permissions and
+ *  *    limitations under the License.
+ *  *
+ *
+ */
 package com.hms.learnyourenvironment.ui.animal_list
 
 import android.view.LayoutInflater
@@ -9,12 +27,13 @@ import com.hms.learnyourenvironment.R
 import com.hms.learnyourenvironment.base.BaseFragment
 import com.hms.learnyourenvironment.data.model.AnimalItem
 import com.hms.learnyourenvironment.databinding.FragmentAnimalListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+//we show animal list
+@AndroidEntryPoint
 class AnimalList : BaseFragment<AnimalListViewModel, FragmentAnimalListBinding>() {
     lateinit var animalLists: ArrayList<AnimalItem>
     private val viewModel: AnimalListViewModel by viewModels()
-    private lateinit var adapter: AnimalListAdapter
     override fun getFragmentViewModel(): AnimalListViewModel {
         return viewModel
     }
@@ -33,56 +52,112 @@ class AnimalList : BaseFragment<AnimalListViewModel, FragmentAnimalListBinding>(
             AnimalItem(
                 "cat",
                 R.drawable.cat,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                " Always falls on its feets and has 9 lives.", R.raw.cat
             )
         )
         animalLists.add(
             AnimalItem(
                 "dog",
                 R.drawable.dog,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                "Loyalest friends to their owner.", R.raw.dog
             )
         )
         animalLists.add(
             AnimalItem(
                 "bird",
                 R.drawable.bird,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                "The sky is their home.", R.raw.bird
             )
         )
         animalLists.add(
             AnimalItem(
                 "duck",
                 R.drawable.duck,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                "Paddles away with its babies.", R.raw.duck
             )
         )
         animalLists.add(
             AnimalItem(
                 "lion",
                 R.drawable.lion,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                "He is the king of the jungle.", R.raw.lion
             )
         )
         animalLists.add(
             AnimalItem(
                 "giraffle",
                 R.drawable.giraffe,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                "Longest neck you will ever see.", R.raw.giraffe
             )
         )
         animalLists.add(
             AnimalItem(
                 "monkey",
                 R.drawable.monkey,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                "  Loves to eat banana while swinging through the jungle.", R.raw.monkey
             )
         )
         animalLists.add(
             AnimalItem(
                 "elephant",
                 R.drawable.elephant,
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+                " Might be the biggest but fears a mouse.", R.raw.elephant
+            )
+        )
+        animalLists.add(
+            AnimalItem(
+                "chicken",
+                R.drawable.chicken,
+                "  Loves to eat banana while swinging through the jungle.", R.raw.chicken
+            )
+        )
+        animalLists.add(
+            AnimalItem(
+                "dolphin",
+                R.drawable.dolpin,
+                "  Loves to eat banana while swinging through the jungle.", R.raw.dolphin
+            )
+        )
+        animalLists.add(
+            AnimalItem(
+                "turtle",
+                R.drawable.turtle,
+                "  Loves to eat banana while swinging through the jungle.", R.raw.turtle
+            )
+        )
+        animalLists.add(
+            AnimalItem(
+                "rhino",
+                R.drawable.rhino,
+                "  Loves to eat banana while swinging through the jungle.", R.raw.rhino
+            )
+        )
+        animalLists.add(
+            AnimalItem(
+                "zebra",
+                R.drawable.zebra,
+                "  Loves to eat banana while swinging through the jungle.", R.raw.zebra
+            )
+        )
+        animalLists.add(
+            AnimalItem(
+                "penguin",
+                R.drawable.penguin,
+                "  Loves to eat banana while swinging through the jungle.", R.raw.penguin
+            )
+        )
+        animalLists.add(
+            AnimalItem(
+                "tiger",
+                R.drawable.tiger,
+                "  Loves to eat banana while swinging through the jungle.", R.raw.tiger
+            )
+        )
+        animalLists.add(
+            AnimalItem(
+                "horse",
+                R.drawable.horse,
+                "  Loves to eat banana while swinging through the jungle.", R.raw.horse
             )
         )
         val layout = GridLayoutManager(requireContext(), 2)

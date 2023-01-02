@@ -54,6 +54,7 @@
             android:id="@+id/loadingAnimation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,17 +62,28 @@
             app:lottie_autoPlay="false"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/listening" />
+
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:background="@color/yellow"
             android:src="@drawable/ic_back"
-
             app:layout_constraintBottom_toTopOf="@+id/animalImage"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ivMic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_microphone"
+            android:layout_marginHorizontal="16dp"
+            android:background="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="@+id/animalIdDetail"
+            app:layout_constraintStart_toEndOf="@+id/animalIdDetail"
+            app:layout_constraintTop_toTopOf="@+id/animalIdDetail" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

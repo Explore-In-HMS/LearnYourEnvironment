@@ -1,14 +1,33 @@
+/*
+ *
+ *  * Copyright 2021. Huawei Technologies Co., Ltd. All rights reserved.
+ *  *
+ *  *    Licensed under the Apache License, Version 2.0 (the "License");
+ *  *    you may not use this file except in compliance with the License.
+ *  *    You may obtain a copy of the License at
+ *  *
+ *  *      http://www.apache.org/licenses/LICENSE-2.0
+ *  *
+ *  *    Unless required by applicable law or agreed to in writing, software
+ *  *    distributed under the License is distributed on an "AS IS" BASIS,
+ *  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  *    See the License for the specific language governing permissions and
+ *  *    limitations under the License.
+ *  *
+ *
+ */
 package com.hms.learnyourenvironment.ui.anilmal_detay
 
 
 import android.Manifest
 import android.app.Dialog
-import android.content.ContextWrapper
 import android.content.pm.PackageManager
 import android.graphics.Typeface
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -34,18 +53,20 @@ import com.hms.learnyourenvironment.utils.TextToSpeechHelper
 import com.hms.learnyourenvironment.utils.doAfter
 import com.huawei.hms.mlsdk.common.MLApplication
 import dagger.hilt.android.AndroidEntryPoint
+
 import javax.inject.Inject
 
+//We show animals of detail
 @AndroidEntryPoint
 class AnimalDetail : BaseFragment<AnimalDetailViewModel, FragmentAnimalDetailBinding>() {
     @Inject
     lateinit var asrHelper: ASRHelper
-    var animal = AnimalItem("", -1, "")
+    var animal = AnimalItem("", -1, "",-1)
     private val animalDetailFragmentArgs by navArgs<AnimalDetailArgs>()
     private var textToSpeechHelper: TextToSpeechHelper? = null
     private val viewModel: AnimalDetailViewModel by viewModels()
     lateinit var materialDialog: MaterialDialog
-
+    var mediaPlayer: MediaPlayer?=null
     override fun getFragmentViewModel(): AnimalDetailViewModel {
         return viewModel
     }
@@ -64,9 +85,8 @@ class AnimalDetail : BaseFragment<AnimalDetailViewModel, FragmentAnimalDetailBin
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        MLApplication.initialize(requireContext())
-        MLApplication.getInstance().apiKey =
-            "DAEDAG0or67nkSEyjDTy5vGQ9sjFW1KYYxnu4olowIk3Ti0flTOzSS0IckOaz4F2onRuPKOnZH08gcfFWttwUZOxcAjiIr1BthgFaw=="
+
+        mediaPlayer = MediaPlayer()
 
         //bottomSheetTTS()
 
@@ -90,7 +110,7 @@ class AnimalDetail : BaseFragment<AnimalDetailViewModel, FragmentAnimalDetailBin
             fragmentViewBinding.loadingAnimation.loop(true)
             permission()
         }
-
+        mediaPlayer = MediaPlayer.create(requireContext(), animal.animalSound)
 
     }
 
@@ -100,17 +120,20 @@ class AnimalDetail : BaseFragment<AnimalDetailViewModel, FragmentAnimalDetailBin
             val action = AnimalDetailDirections.actionAnimalDetailToAnimalList()
             view?.findNavController()?.navigate(action)
         }
+        mediaPlayer?.setOnPreparedListener {
+            it.let {
+                print("Ready to go")
+            }
+        }
+        fragmentViewBinding.ivMic.setOnTouchListener { _, event ->
+            event.let {
+                handleTouch(it)
+                true
+            }
+        }
     }
 
-    //Normal dialog
-    private fun bottomSheetResult() {
-        val dialog = Dialog(requireContext())
-        val view = layoutInflater.inflate(R.layout.result_custom_dialog, null)
-        dialog.setContentView(view)
-        //view.resultNumber.text = "% " + randomNumber()
-        dialog.show()
-    }
-
+    //Normal dialog for result
     private fun resultDialog() {
         materialDialog = MaterialDialog(
             requireContext()
@@ -137,6 +160,7 @@ class AnimalDetail : BaseFragment<AnimalDetailViewModel, FragmentAnimalDetailBin
             }
     }
 
+    // Custom dialog for tts
     fun materialSheet() {
         materialDialog = MaterialDialog(
             requireContext(),
@@ -150,13 +174,13 @@ class AnimalDetail : BaseFragment<AnimalDetailViewModel, FragmentAnimalDetailBin
         ).setPeekHeight(setMaxHeightPercentage())
             .cornerRadius(30f)
             .show {
-                textToSpeechHelper?.startTTS(animal.animalName + " "+ animal.animalDescription)
+                textToSpeechHelper?.startTTS(animal.animalName + " " + animal.animalDescription)
             }.onDismiss {
                 textToSpeechHelper?.stopTTS()
             }
     }
 
-
+    // Set dialog size
     private fun setMaxHeightPercentage(): Int {
         val displayMetrics = DisplayMetrics()
         requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -242,5 +266,17 @@ class AnimalDetail : BaseFragment<AnimalDetailViewModel, FragmentAnimalDetailBin
                 Toast.makeText(requireContext(), "Permission Error", Toast.LENGTH_SHORT).show()
             }
         }
+
+    fun handleTouch(event: MotionEvent) {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                mediaPlayer?.start()
+            }
+            MotionEvent.ACTION_CANCEL -> {
+                mediaPlayer?.pause()
+                mediaPlayer?.seekTo(0)
+            }
+        }
+    }
 
 }
