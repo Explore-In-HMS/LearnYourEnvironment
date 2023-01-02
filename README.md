@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Animals is developed for children who are in the age of distinguishing their environment. This app aims to teach children about the animals that are either domestic or wild. Children can also practice to pronounce the animal name and see an estimated score based on their pronuncitaion.
+Learn Your Environment - Animals is developed for children who are in the age of distinguishing their environment. This app aims to teach children about the animals that are either domestic or wild. Children can also practice to pronounce the animal name and see an estimated score based on their pronuncitaion.
 
 ## About HUAWEI ML Kit - Automatic Speech Recognition
 
@@ -109,7 +109,7 @@ Then click enable now button <br/>
 #### 3 Model Creation
 ##### Requirements:
 
-- The number of image categories is at least 2
+- The number of text categories is at least 2
 - Each category contains at least 20 files. More files will guarantee a higher model precision.
 - The text size does not exceed 10 MB.
 - The file encoding format is UTF-8.
@@ -136,9 +136,9 @@ Here we add the dataset we created. <br/>
 You can see the accuracy rate in the logs when train and validate are 100%
 ![](https://miro.medium.com/max/750/1*x6MZn7BlFxJnXQQt-_Mn_g.webp) <br/>
 ![](https://miro.medium.com/max/828/1*vWTis6j_pdn-KVqLN5e57w.webp)<br/>
-Oluşturduğumuz modeli test etmek için hazırladığımız test modelini yükleyeceğiz.<br/>
-- Yine Case 1 ve Case2 ile birlikte trende verilen örnek veri setinin test veri setleri de indirilebilir. <br/>
-Test işlemi tamamlandığında, Test ortalama doğruluk değerini göreceksiniz.
+We will upload the test model we have prepared to test the model we have created.<br/>
+- When you press the Case1 and Case 2 options, you can obtain a sample data set. <br/>
+End the test process, measure the average accuracy of the test. <br/>
 
 #### 4 Add The Created Model To The Application
 ##### 4.1- Add Dependency
@@ -210,7 +210,7 @@ Upon completing the essential parts of the code, connect your mobile device to t
 7-) You see a Resuld Dialog Screen that contains "Result","Go To Home Button" and "Go to previous Page Button" <br/> 
 
 ## Screenshots
-![](https://user-images.githubusercontent.com/76018221/210230637-e4410261-7123-4436-82b5-34a66d9d3ffa.png)
+![](https://user-images.githubusercontent.com/76018221/210241742-06b6d848-d8a1-4eae-b8f3-c5ce2c131a82.png)<br/>![](https://user-images.githubusercontent.com/76018221/210242246-9a7e9345-3b91-4065-a633-2202efc46deb.png)  <br/> ![](https://user-images.githubusercontent.com/76018221/210241374-43bdee6d-9e68-41e0-8e89-18f56fdbe86b.png)<br/>![](https://user-images.githubusercontent.com/76018221/210242365-05fe3f0e-1689-41e3-8c4a-bca87af251fc.png) <br/>![resultdialog](https://user-images.githubusercontent.com/76018221/210241690-6d04efee-72ab-4b1b-b4a4-f7060f432d9c.png) <br/>
 ## Project Structure 
 Learn Your Environment is designed with MVVM design pattern.
 ## Libraries
@@ -223,5 +223,5 @@ Learn Your Environment is designed with MVVM design pattern.
 - Dagger Hilt
 - Lottie
 ## Contributor
-[Ertug Sagman](https://github.com/ertug-sagman0)
+[Ertug Sagman](https://github.com/ertug-sagman0) <br/>
 [Ataberk Celiktas](https://github.com/AtaberkCeliktas)
