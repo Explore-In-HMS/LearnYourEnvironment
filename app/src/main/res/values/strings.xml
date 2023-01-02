@@ -3,4 +3,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="learn_animal_name">Play Game &amp; Learn Animal Name</string>
+    <string name="welcome_text">Learn Your Environment - Animals is developed for children who are in the age of distinguishing their environment</string>
 </resources>
