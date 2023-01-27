@@ -2,45 +2,45 @@
 
 ## Introduction
 
-Learn Your Environment - Animals is developed for children who are in the age of distinguishing their environment. This app aims to teach children about the animals that are either domestic or wild. Children can also practice to pronounce the animal name and see an estimated score based on their pronuncitaion.
+Learn Your Environment – Animals is developed for children who are old enough to identify elements of their environment by name. This app aims to teach children about animals domestic or wild. Children can also practice pronouncing animal names and see an estimated score based on their pronuncitaion.
 
-## About HUAWEI ML Kit - Automatic Speech Recognition
+## About HUAWEI ML Kit – Automatic Speech Recognition
 
-Automatic speech recognition (ASR) can recognize speech not longer than 60s and convert the input speech into text in real time. This service uses industry-leading deep learning technologies to achieve a recognition accuracy of over 95%.
+Automatic speech recognition (ASR) can recognize speech no longer than 60s and convert the input speech into text in real time. This service uses industry-leading deep learning technology to achieve a recognition accuracy of over 95%.
 
-For more information -> [HUAWEI ML Kit - Automatic Speech Recognition Guide](https://developer.huawei.com/consumer/en/doc/development/hiai-Guides/ml-asr-0000001050066212) 
+For more information -> [HUAWEI ML Kit – Automatic Speech Recognition Guide](https://developer.huawei.com/consumer/en/doc/development/hiai-Guides/ml-asr-0000001050066212) 
 
-## About HUAWEI ML Kit - Text to Speech
+## About HUAWEI ML Kit – Text to Speech
 
 Text to speech (TTS) can convert text information into audio output in real time. Rich timbres are provided and the volume and speed can be adjusted, thereby natural voices can be produced.
 
-For more information -> [HUAWEI ML Kit - Text to Speech](https://developer.huawei.com/consumer/en/doc/development/hiai-Guides/ml-tts-0000001050068169)
+For more information -> [HUAWEI ML Kit – Text to Speech](https://developer.huawei.com/consumer/en/doc/development/hiai-Guides/ml-tts-0000001050068169)
 
-## About Huawei ML Kit - Custom Model Text Classification
+## About Huawei ML Kit – Custom Model Text Classification
 
-It allows us to extract values ​​by grouping the texts, while doing this, certain classifications are used. Ml kit allows us to create your own custom model with AI Create
+It allows us to extract values ​​by grouping texts, all the while using certain classifications. The ML kit allows us to create our own custom model with AI Create.
 
 ### Before the start
 
 #### 1- Developer Account
-You should have an AppGallery Console developer account.If you do not have an account,you should [create an account](https://id1.cloud.huawei.com/CAS/portal/userRegister/regbyphone.html).
+You should have an AppGallery Console developer account. If you do not have an account, you should [create an account](https://id1.cloud.huawei.com/CAS/portal/userRegister/regbyphone.html).
 
 #### 2-  HMS Toolkit
-For using ai create that hms tool kit must be installed.
+To use AI Create, the HMS Toolkit must be installed.
 Android Studio: File → Settings → Plugins → HMS Toolkit 
-! IDE must be restarted after installation
+! Your IDE must be restarted after installation
 ![](https://miro.medium.com/max/828/0*Ud0OGt6L7RWwAe5w)
 
-Important: HMS Toolkit is expected to support Android Studio Bumblebee version from June 2022. It is currently available in the Android Arctic Fox version.
+Important: HMS Toolkit is needed to support the Android Studio Bumblebee version from June 2022. It is currently available in the Android Arctic Fox version.
 
 #### 3- Python for ML Kit
-AI Creator requires Python v3.7.5 for ML Kit use.Complete your installation by downloading the Python 3.7.5 version from the [Link](https://www.python.org/downloads/release/python-375/).
+AI Creator requires Python v3.7.5 to use the ML Kit. Complete your installation by downloading Python 3.7.5 from [here](https://www.python.org/downloads/release/python-375/).
 ##### Notes:
-- Automatically select the process of adding the path during installation
+- Choose to add the path during installation.
 ![](https://miro.medium.com/max/828/1*A9rRNhjK1SuB7EsMpL-QnA.webp)
-- Make sure to install with pip selected during installation.
-- The path may conflict if there is another python version already installed. You have to uninstall the old version and install the new one.
-- If Android Studio is open after installing Python, it must be restarted.
+- Make sure to install with the pip selected on the wizard during installation.
+- The path may conflict with a possible other python version already installed. If so, you will have to uninstall the old version to install the new one.
+- If Android Studio is open when installing Python, it must be restarted.
 
 #### 4- Data Preparation
 You can use two types of text data in HMS ML Kit Text Classification.
@@ -54,17 +54,17 @@ You can use two types of text data in HMS ML Kit Text Classification.
 
 ### Project Steps 
 
-#### 1- Create Android Project
+#### 1- Create an Android Project
 
 Let’s start with creating an empty android project. <br/>
-Notes: The min sdk for text classification should be 22.
+Notes: The min. sdk for text classification should be 22.
 
 #### 2- App Gallery Connection:
-2.1- A project is created from [My Projects](https://developer.huawei.com/consumer/en/service/josp/agc/index.html#/myProject) -> Add new project by going to the [App Gallery Connect Console](https://id5.cloud.huawei.com/CAS/portal/loginAuth.html). <br/>
+2.1- Create your project by going to [My Projects](https://developer.huawei.com/consumer/en/service/josp/agc/index.html#/myProject) -> Add new project by going to the [App Gallery Connect Console](https://id5.cloud.huawei.com/CAS/portal/loginAuth.html). <br/>
 2.2- Enable data processing location <br/>
 ![](https://miro.medium.com/max/640/1*1Vr83dD0N0nsTre7ZyBOhQ.webp) <br/>
-2.2- Adding App to Project <br/>
-2.3- [Integrating the AppGallery Connect SDK](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started#h1-1577962129917) in Android Studio: <br/>
+2.2- Add the App to the Project <br/>
+2.3- [Integrate the AppGallery Connect SDK](https://developer.huawei.com/consumer/en/doc/development/AppGallery-connect-Guides/agc-get-started#h1-1577962129917) in Android Studio: <br/>
 SDKs are added to the gradle file before the agconnect-services.json file (because we haven’t activated the ML kit service yet).<br/>
 a) Project-level build.gradle <br/>
 allprojects {<br/>
@@ -101,7 +101,7 @@ My projects → Project → Build → ML Kit (in left menu) <br/>
 ![](https://miro.medium.com/max/828/1*_iqvK2WhXcL305-L_9-Oug.webp)<br/>
 
 2.5- Add agconnect-services.json
-top left menu - project settings → app information → download agconnect-services.json file
+top left menu – project settings → app information → download agconnect-services.json file
 Then add it on your project to app directory in project view
 Then click enable now button <br/>
 ![](https://miro.medium.com/max/828/1*ly5Jhi79SRcdteHlyLg7Ng.webp) <br/>
@@ -214,9 +214,9 @@ Upon completing the essential parts of the code, connect your mobile device to t
 ## Project Structure 
 Learn Your Environment is designed with MVVM design pattern.
 ## Libraries
-- Huawei ML Kit - Automatic Speech Recognition
-- Huawei ML Kit - Text to Speech
-- Huawei ML Kit - Custom Model Text Classification
+- Huawei ML Kit – Automatic Speech Recognition
+- Huawei ML Kit – Text to Speech
+- Huawei ML Kit – Custom Model Text Classification
 - ViewModel
 - Navigation
 - ViewBinding
